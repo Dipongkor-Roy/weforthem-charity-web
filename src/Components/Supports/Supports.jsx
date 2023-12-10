@@ -13,7 +13,7 @@ const Supports = () => {
             <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
               In a world that thrives on kindness, I find my strength in lending
               a helping hand to those in need. For me, growth isn't just a
-              personal journey; it's a shared experience of lifting others
+              personal journey; it is a shared experience of lifting others
               toward a brighter tomorrow.
             </p>
           </div>
