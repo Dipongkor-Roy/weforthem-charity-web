@@ -5,7 +5,7 @@ import Main from "../Main/Main";
 import Register from "../Register/Register";
 import Donation from "../Donation/Donation";
 import Event from "../Event/Event";
-import Supports from "../Supports/Supports";
+
 
 
 export const router = createBrowserRouter([
@@ -15,11 +15,6 @@ export const router = createBrowserRouter([
         {
             path:"/",
             element:<Hero/>
-        },
-        {
-            path:"/supports",
-            element:<Supports/>,
-            loader:()=>fetch("http://localhost:2000/supports")
         },
         {
             path:'/logIn',

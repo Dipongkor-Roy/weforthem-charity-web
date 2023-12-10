@@ -1,7 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import Support from "../Support/Support"
+import { useEffect, useState } from "react";
 const Supports = () => {
-  const supports=useLoaderData();
+  const [supports,setSupports]=useState([])
+  //to get data from database
+  useEffect(()=>{
+  fetch("http://localhost:2000/supports")
+  .then(res=>res.json())
+  .then(data=>setSupports(data))
+  }
+  ,[]);
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -21,14 +29,13 @@ const Supports = () => {
             </p>
           </div>
           <div className="flex flex-wrap -m-4">
-            <div className="xl:w-1/4 md:w-1/2 p-4">
               {
                 supports.map(support=><Support
                 key={support.id}
                 support={support}>
                 </Support>)
               }
-            </div>
+         
            
           </div>
         </div>
