@@ -5,6 +5,7 @@ import Main from "../Main/Main";
 import Register from "../Register/Register";
 import Donation from "../Donation/Donation";
 import Event from "../Event/Event";
+import Admin from "../Admin/Admin";
 
 
 
@@ -32,7 +33,10 @@ export const router = createBrowserRouter([
             path:"/events",
             element:<Event/>
         },
-        
+        {
+            path:"/admin",
+            element:<Admin/>
+        }
         
     ],
 
