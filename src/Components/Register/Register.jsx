@@ -2,23 +2,40 @@ import { useState } from "react";
 
 const Register = () => {
   const [volunteer,setVolunteers]=useState({})
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('dj')
-    // fetch('http://localhost:2000/volunteers', {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(volunteer)
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
+    console.log(volunteer)
+    fetch('http://localhost:2000/volunteers', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(volunteer)
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
      
   };
 const handleInputBlur=event=>{
   console.log('onBlur triggered');
-  console.log(event.target)
+  const form=event.target;
+
+  const fname=form.name;
+  const femail=form.email;
+  const fregDate=form.regdate;
+  
+  const nameValue=form.fname.value;
+  const emailValue=form.femail.value;
+  const regValue=form.fregdate.value;
+  
+  const newVolunteer={...volunteer};
+  newVolunteer[fname]=nameValue;
+  newVolunteer[femail]=emailValue;
+  newVolunteer[fregDate]=regValue;
+
+  setVolunteers(newVolunteer);
+  console.log('Updated Volunteer:', newVolunteer);
 }
   return (
     <div>
@@ -46,7 +63,7 @@ const handleInputBlur=event=>{
               <input onBlur={handleInputBlur}
                 type="text"
                 id="name"
-                name='name'
+                name="name"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -62,9 +79,9 @@ const handleInputBlur=event=>{
             <div className="relative mb-4">
               <label className="leading-7 text-sm text-gray-600">Date</label>
               <input onBlur={handleInputBlur}
-                type="text"
-                id="date"
-                name='regdate'
+                type="date"
+                id="regdate"
+                name="regdate"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -74,8 +91,8 @@ const handleInputBlur=event=>{
               </label>
               <input onBlur={handleInputBlur}
                 type="password"
-                id="password"
-                name='password'
+                id="pass"
+                name='pass'
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
